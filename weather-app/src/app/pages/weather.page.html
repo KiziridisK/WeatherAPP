@@ -1,0 +1,40 @@
+<mat-card *ngIf="weatherData" class="weather-card">
+  <mat-card-header>
+    <mat-card-title>{{ weatherData.name }}, {{ weatherData.sys.country }}</mat-card-title>
+    <mat-card-subtitle>{{ weatherData.weather[0].main }} — {{ weatherData.weather[0].description }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="weather-main-info">
+      <img
+        class="weather-icon"
+        [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'"
+        alt="Weather icon"
+      />
+      <div class="temp-info">
+        <div class="temp-current">{{ weatherData.main.temp | number:'1.0-0' }}°C</div>
+        <div class="temp-minmax">
+          Min: {{ weatherData.main.temp_min | number:'1.0-0' }}°C / Max: {{ weatherData.main.temp_max | number:'1.0-0' }}°C
+        </div>
+        <div>Feels like: {{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="extra-info">
+      <div>Humidity: {{ weatherData.main.humidity }}%</div>
+      <div>Pressure: {{ weatherData.main.pressure }} hPa</div>
+      <div>Wind: {{ weatherData.wind.speed }} m/s, {{ weatherData.wind.deg }}°</div>
+      <div>Cloudiness: {{ weatherData.clouds.all }}%</div>
+      <div>Visibility: {{ weatherData.visibility / 1000 }} km</div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="sun-times">
+      <div>Sunrise: {{ formatTime(weatherData.sys.sunrise) }}</div>
+      <div>Sunset: {{ formatTime(weatherData.sys.sunset) }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

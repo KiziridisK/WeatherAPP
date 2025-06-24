@@ -1,0 +1,24 @@
+<div #lottieAnim *ngIf="isPlaying" class="lottie-wrapper lottie-overlay" style="display:flex; justify-content:center;">
+  <ng-lottie *ngIf="isPlaying"  (animationCreated)="handleAnimation($event)" [options]="options" style="width:250px; height:250px;"></ng-lottie>
+</div>
+<div class="container">
+  <mat-card class="home-card">
+    <mat-card-header>
+      <mat-card-title>🌤️ Weather Lookup</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="searchCity()" class="form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Enter a city</mat-label>
+          <input matInput [formControl]="cityControl" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="!cityControl.value">
+          Check Weather
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-footer>
+      <small>Example: London, Paris, Tokyo</small>
+    </mat-card-footer>
+  </mat-card>
+</div>
