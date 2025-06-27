@@ -1,7 +1,28 @@
-<mat-toolbar color="primary" class="app-toolbar">
-  <span class="app-title">🌦️ Weather Now</span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/about">About</button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div #lottieAnim *ngIf="isPlaying" class="lottie-wrapper lottie-overlay" style="display:flex; justify-content:center;">
+  <ng-lottie *ngIf="isPlaying"  (animationCreated)="handleAnimation($event)" [options]="options" style="width:250px; height:250px;"></ng-lottie>
+</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer mode="side" class="sidenav" [opened]="true">
+    <mat-toolbar>{{"menu" | translate}}</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" >Home</a>
+      <a mat-list-item routerLink="/favorites" >Favorites</a>
+      <a mat-list-item routerLink="/settings" >Settings</a>
+      <!--<a mat-list-item routerLink="/about">About</a> -->
+      <a mat-list-item routerLink="/about" (click)="drawer.toggle()">About</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="app-toolbar">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="app-title">🌦️ Weather</span>
+    </mat-toolbar>
+    
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -10,7 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import * as PAOK from '../../assets/animations/cloudy-weather.json'
 import {LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
-
+import { MatChipsModule } from '@angular/material/chips';
+import * as _ from "lodash";
 @Component({
   standalone: true,
   selector: 'app-home',
@@ -23,7 +24,8 @@ import { AnimationItem } from 'lottie-web';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    LottieComponent  
+    MatChipsModule,
+    LottieComponent 
   ],
   templateUrl: './home.page.html',
   styleUrl: './home.page.scss'
@@ -34,6 +36,8 @@ export class HomePage implements OnInit{
   public cityControl = new FormControl('')
   private animationItem?: AnimationItem;
   public isPlaying: boolean = true;
+  public popularCities = ['London', 'New York', 'Tokyo'];
+
   public options = {
     path: '/assets/animations/cloudy-weather.json',
     loop: false,
@@ -55,9 +59,9 @@ export class HomePage implements OnInit{
       this.isPlaying = false;
     }
   }
-  public searchCity() {
-    const city = this.cityControl.value?.trim();
-    if(city) {
+  public searchCity(city: string = '') {
+    const city_to_search = (city && !_.isEmpty(city)) ? city :  this.cityControl.value?.trim();
+    if(city_to_search) {
       this.router.navigate(['/weather', city]);
     }
   }

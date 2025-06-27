@@ -1,0 +1,6 @@
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8px; /* Reduced from 16px to 8px for tighter spacing */
+  padding: 8px; /* Optional: adjust if too much space around */
+}

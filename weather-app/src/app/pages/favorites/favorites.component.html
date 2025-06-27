@@ -1,0 +1,14 @@
+<div *ngIf="favorites.length > 0; else noFavoritesTemplate" class="favorites-container">
+  <app-weather-item 
+    *ngFor="let weatherData of favorites" 
+    [weatherData]="weatherData" 
+    [fromFavorites]="true">
+  </app-weather-item>
+</div>
+
+<ng-template #noFavoritesTemplate>
+  <div class="no-favorites-message">
+    <mat-icon color="accent" fontIcon="info">star_outline</mat-icon>
+    <p>You have no favorite cities yet. Add some from the weather page!</p>
+  </div>
+</ng-template>

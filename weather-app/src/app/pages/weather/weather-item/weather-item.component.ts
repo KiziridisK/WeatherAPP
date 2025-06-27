@@ -1,42 +1,40 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import { Component, OnInit, Input } from '@angular/core';
+import { WeatherService } from '../../../services/weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { WeatherService } from '../services/weather.service';
-import { WeatherData } from '../models/weather.model';
-import { MatDividerModule } from '@angular/material/divider';
-import { FavoritesService } from '../services/favorites.service';
+import { FavoritesService } from '../../../services/favorites.service';
+import { WeatherData } from '../../../models/weather.model';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { WeatherItemComponent } from './weather/weather-item/weather-item.component';
+import { MatDividerModule } from '@angular/material/divider';
+
 @Component({
-  standalone: true,
-  selector: 'app-weather',
+  selector: 'app-weather-item',
   imports: [
     CommonModule, 
     MatCardModule,
     MatDividerModule,
     MatIcon,
-    MatProgressSpinnerModule,
-    WeatherItemComponent
+    MatProgressSpinnerModule
   ],
-  templateUrl: './weather.page.html',
-  styleUrl: './weather.page.scss'
+  templateUrl: './weather-item.component.html',
+  styleUrl: './weather-item.component.scss'
 })
+export class WeatherItemComponent implements OnInit {
 
-export class WeatherPage implements OnInit {
-  public weatherData: WeatherData | null = null;
+  @Input() weatherData: WeatherData | null = null;
+  @Input() fromFavorites: boolean = false;
   public loading: boolean = false;
 
   constructor(
     private weatherService: WeatherService,
     private route: ActivatedRoute,
     private favoritesService: FavoritesService
-   ) {
+
+  ) {
 
   }
-
   ngOnInit(): void {
     console.log('this.route',this.route);
     console.log('this.route.snapshot',this.route.snapshot);
@@ -75,5 +73,5 @@ export class WeatherPage implements OnInit {
       this.favoritesService.addFavorites(this.weatherData);
     }
   }
-  
+
 }

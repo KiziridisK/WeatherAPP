@@ -1,6 +1,6 @@
-<div #lottieAnim *ngIf="isPlaying" class="lottie-wrapper lottie-overlay" style="display:flex; justify-content:center;">
+<!--<div #lottieAnim *ngIf="isPlaying" class="lottie-wrapper lottie-overlay" style="display:flex; justify-content:center;">
   <ng-lottie *ngIf="isPlaying"  (animationCreated)="handleAnimation($event)" [options]="options" style="width:250px; height:250px;"></ng-lottie>
-</div>
+</div>-->
 <div class="container">
   <mat-card class="home-card">
     <mat-card-header>
@@ -16,6 +16,11 @@
           Check Weather
         </button>
       </form>
+      <mat-chip-listbox aria-label="Popular cities">
+        <mat-chip-option *ngFor="let city of popularCities" (click)="searchCity(city)">
+          {{ city }}
+        </mat-chip-option>
+</mat-chip-listbox>
     </mat-card-content>
     <mat-card-footer>
       <small>Example: London, Paris, Tokyo</small>
