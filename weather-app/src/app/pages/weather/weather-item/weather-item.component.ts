@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-weather-item',
   imports: [
@@ -16,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatDividerModule,
     MatIcon,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TranslatePipe
   ],
   templateUrl: './weather-item.component.html',
   styleUrl: './weather-item.component.scss'
@@ -26,7 +27,7 @@ export class WeatherItemComponent implements OnInit {
   @Input() weatherData: WeatherData | null = null;
   @Input() fromFavorites: boolean = false;
   public loading: boolean = false;
-
+  public favorite: boolean = false;
   constructor(
     private weatherService: WeatherService,
     private route: ActivatedRoute,
@@ -53,9 +54,12 @@ export class WeatherItemComponent implements OnInit {
         },
       });
     }
+
+    this.favorite = this.isFavorite()
+    console.log('this.favorite',this.favorite)
   }
 
-  formatTime(timestamp: number): string {
+  public formatTime(timestamp: number): string {
     if(this.weatherData?.timezone) {
       const date = new Date((timestamp + this.weatherData?.timezone) * 1000);
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -68,9 +72,15 @@ export class WeatherItemComponent implements OnInit {
     return this.weatherData ? this.favoritesService.isFavorite(this.weatherData): false;
   }
 
-  addToFavorites() {
+  public addToFavorites() {
     if (this.weatherData) {
       this.favoritesService.addFavorites(this.weatherData);
+    }
+  }
+
+  public deleteFromFavorites() {
+    if(this.weatherData) {
+      this.favoritesService.removeFavorite(this.weatherData);
     }
   }
 

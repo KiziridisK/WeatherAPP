@@ -4,16 +4,16 @@
 <div class="container">
   <mat-card class="home-card">
     <mat-card-header>
-      <mat-card-title>🌤️ Weather Lookup</mat-card-title>
+      <mat-card-title>🌤️ {{"lookup" | translate}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form (ngSubmit)="searchCity()" class="form">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Enter a city</mat-label>
+          <mat-label>{{"enter_name" | translate}}</mat-label>
           <input matInput [formControl]="cityControl" required />
         </mat-form-field>
         <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="!cityControl.value">
-          Check Weather
+          {{"search_weather" | translate}}
         </button>
       </form>
       <mat-chip-listbox aria-label="Popular cities">
@@ -23,7 +23,7 @@
 </mat-chip-listbox>
     </mat-card-content>
     <mat-card-footer>
-      <small>Example: London, Paris, Tokyo</small>
+      <small>{{"example" | translate}}: London, Paris, Tokyo</small>
     </mat-card-footer>
   </mat-card>
 </div>

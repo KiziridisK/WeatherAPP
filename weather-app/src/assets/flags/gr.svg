@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="greece">
+  <path fill="#fff" d="M4.3 18.1h55.4v4H4.3z"></path>
+  <path fill="#0041d3" d="M4.3 14.1h55.4v4H4.3z"></path>
+  <path fill="#fff" d="M4.3 26h55.4v4H4.3z"></path>
+  <path fill="#0041d3" d="M4.3 22.1h55.4v4H4.3z"></path>
+  <path fill="#fff" d="M4.3 34h55.4v4H4.3z"></path>
+  <path fill="#0041d3" d="M4.3 30h55.4v4H4.3z"></path>
+  <path fill="#fff" d="M4.3 41.9h55.4v4H4.3z"></path>
+  <path fill="#0041d3" d="M4.3 38h55.4v4H4.3zM4.3 45.9h55.4v4H4.3zM4.3 14.1h19.8v19.8H4.3z"></path>
+  <path fill="#fff" d="M4.3 22.1h19.8v4H4.3z"></path>
+  <path fill="#fff" d="M12.3 14.1h4v19.8h-4z"></path>
+</svg>

@@ -59,24 +59,22 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-
-  startAnimation() {
+  public startAnimation() {
     this.animationItem?.play();
   }
 
-  pauseAnimation() {
+  public pauseAnimation() {
     this.animationItem?.pause();
   }
 
-  stopAnimation() {
+  public stopAnimation() {
     this.animationItem?.stop();
     console.log('this.animationItem',this.animationItem);
     this.isPlaying = false;
     console.log('this.isPlaying in stop',this.isPlaying);
   }
 
-  handleAnimation(animation: AnimationItem) {
+  public handleAnimation(animation: AnimationItem) {
     this.animationItem = animation;
 
      animation.addEventListener('complete', () => {
@@ -87,5 +85,10 @@ export class AppComponent implements OnInit {
       });
       this.stopAnimation();
     });
+  }
+
+  
+  public switchLang(lang: string) {
+    this.translateService.setLanguage(lang);
   }
 }

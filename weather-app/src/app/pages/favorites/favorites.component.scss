@@ -4,3 +4,14 @@
   gap: 8px; /* Reduced from 16px to 8px for tighter spacing */
   padding: 8px; /* Optional: adjust if too much space around */
 }
+
+
+.mat-clear-icon {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+.mat-clear-icon:hover,
+.mat-clear-icon:focus {
+  background-color: transparent !important;
+}

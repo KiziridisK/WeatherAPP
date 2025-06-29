@@ -14,33 +14,36 @@
       <div class="temp-info">
         <div class="temp-current">{{ weatherData.main.temp | number:'1.0-0' }}°C</div>
         <div class="temp-minmax">
-          Min: {{ weatherData.main.temp_min | number:'1.0-0' }}°C / Max: {{ weatherData.main.temp_max | number:'1.0-0' }}°C
+          {{"min" | translate}}: {{ weatherData.main.temp_min | number:'1.0-0' }}°C / {{"max" | translate}}: {{ weatherData.main.temp_max | number:'1.0-0' }}°C
         </div>
-        <div>Feels like: {{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
+        <div>{{"feels_like" | translate}}: {{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
       </div>
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="extra-info">
-      <div>Humidity: {{ weatherData.main.humidity }}%</div>
-      <div>Pressure: {{ weatherData.main.pressure }} hPa</div>
-      <div>Wind: {{ weatherData.wind.speed }} m/s, {{ weatherData.wind.deg }}°</div>
-      <div>Cloudiness: {{ weatherData.clouds.all }}%</div>
-      <div>Visibility: {{ weatherData.visibility / 1000 }} km</div>
+      <div>{{"humidity" | translate}}: {{ weatherData.main.humidity }}%</div>
+      <div>{{"pressure" | translate}}: {{ weatherData.main.pressure }} hPa</div>
+      <div>{{"wind" | translate}}: {{ weatherData.wind.speed }} m/s, {{ weatherData.wind.deg }}°</div>
+      <div>{{"cloud" | translate}}: {{ weatherData.clouds.all }}%</div>
+      <div>{{"visibility" | translate}}: {{ weatherData.visibility / 1000 }} km</div>
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="sun-times">
-      <div>Sunrise: {{ formatTime(weatherData.sys.sunrise) }}</div>
-      <div>Sunset: {{ formatTime(weatherData.sys.sunset) }}</div>
+      <div>{{"sunrise" | translate}}: {{ formatTime(weatherData.sys.sunrise) }}</div>
+      <div>{{"sunset" | translate}}: {{ formatTime(weatherData.sys.sunset) }}</div>
     </div>
   </mat-card-content>
 
-  <mat-card-actions *ngIf="!fromFavorites" class="card-actions">
-    <button mat-flat-button color="primary" class="favorite-btn" (click)="addToFavorites()">
+  <mat-card-actions class="card-actions">
+    <button *ngIf="!isFavorite()" mat-flat-button color="primary" class="favorite-btn" (click)="addToFavorites()">
       <mat-icon>favorite</mat-icon>&nbsp;
+    </button>
+     <button *ngIf="isFavorite()" mat-flat-button color="primary" class="favorite-btn" (click)="deleteFromFavorites()">
+      <mat-icon>delete</mat-icon>&nbsp;
     </button>
   </mat-card-actions>
 </mat-card>

@@ -1,3 +1,26 @@
 {
-    "menu": "Menu"
+    "menu": "Menu",
+    "cards": "Cards",
+    "table": "Table",
+    "favorites": "Favorites",
+    "home": "Home",
+    "about": "About",
+    "city": "City",
+    "actions": "Actions",
+    "delete": "Delete",
+    "no_cities": "You have not saved any cities in your favorites",
+    "lookup": "Weather lookup",
+    "enter_name": "Enter city name PAOK",
+    "search_weather": "Search weather",
+    "feels_like": "Feels like",
+    "min": "Min",
+    "max": "Max",
+    "humidity": "Humidity",
+    "pressure": "Pressure",
+    "wind": "Wind",
+    "cloud": "Cloudiness",
+    "visibility": "Visibility",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "example" : "Example"
 }

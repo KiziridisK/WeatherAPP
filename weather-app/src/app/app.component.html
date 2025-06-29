@@ -1,16 +1,22 @@
-<div #lottieAnim *ngIf="isPlaying" class="lottie-wrapper lottie-overlay" style="display:flex; justify-content:center;">
-  <ng-lottie *ngIf="isPlaying"  (animationCreated)="handleAnimation($event)" [options]="options" style="width:250px; height:250px;"></ng-lottie>
-</div>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="side" class="sidenav" [opened]="true">
-    <mat-toolbar>{{"menu" | translate}}</mat-toolbar>
+  <mat-sidenav #drawer mode="side" class="sidenav custom-sidenav" [opened]="true">
+    <mat-toolbar>{{ 'menu' | translate }}</mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item routerLink="/" >Home</a>
-      <a mat-list-item routerLink="/favorites" >Favorites</a>
-      <a mat-list-item routerLink="/settings" >Settings</a>
-      <!--<a mat-list-item routerLink="/about">About</a> -->
-      <a mat-list-item routerLink="/about" (click)="drawer.toggle()">About</a>
+      <a mat-list-item routerLink="/">{{ 'home' | translate }}</a>
+      <a mat-list-item routerLink="/favorites">{{ 'favorites' | translate }}</a>
+      <a mat-list-item routerLink="/about">{{ 'about' | translate }}</a>
     </mat-nav-list>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button mat-icon-button matTooltip="Greek" (click)="switchLang('el')">
+        <img src="../assets/flags/gr.svg" width="24" height="24" alt="Greek Flag" />
+      </button>
+      <button mat-icon-button matTooltip="English" (click)="switchLang('en')">
+        <img src="../assets/flags/gb.svg" width="24" height="24" alt="UK Flag" />
+      </button>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -20,7 +26,7 @@
       </button>
       <span class="app-title">🌦️ Weather</span>
     </mat-toolbar>
-    
+
     <div class="main-content">
       <router-outlet></router-outlet>
     </div>

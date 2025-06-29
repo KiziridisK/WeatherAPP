@@ -29,3 +29,18 @@
   z-index: 9999; // ensure it's above everything
   pointer-events: all; // optional: block clicks while loading
 }
+
+.custom-sidenav {
+  background-color: #f5f5f5; /* light gray background */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}

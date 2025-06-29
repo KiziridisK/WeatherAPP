@@ -12,6 +12,8 @@ import {LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { MatChipsModule } from '@angular/material/chips';
 import * as _ from "lodash";
+import { TranslatePipe } from '@ngx-translate/core';
+
 @Component({
   standalone: true,
   selector: 'app-home',
@@ -25,7 +27,8 @@ import * as _ from "lodash";
     MatCardModule,
     MatToolbarModule,
     MatChipsModule,
-    LottieComponent 
+    LottieComponent,
+    TranslatePipe
   ],
   templateUrl: './home.page.html',
   styleUrl: './home.page.scss'
@@ -60,9 +63,12 @@ export class HomePage implements OnInit{
     }
   }
   public searchCity(city: string = '') {
+    console.log('city',city);
     const city_to_search = (city && !_.isEmpty(city)) ? city :  this.cityControl.value?.trim();
+    console.log('city_to_search',city_to_search);
+
     if(city_to_search) {
-      this.router.navigate(['/weather', city]);
+      this.router.navigate(['/weather', city_to_search]);
     }
   }
 

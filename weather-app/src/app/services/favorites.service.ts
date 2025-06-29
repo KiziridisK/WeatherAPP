@@ -32,12 +32,14 @@ export class FavoritesService {
 
   public removeFavorite(city: WeatherData) {
     let favorites = this.getFavorites();
-    const index = _.filter(favorites, (f) => f.name !== city.name);
+    favorites = _.filter(favorites, (f) => f.name !== city.name);
     localStorage.setItem(this.storageKey, JSON.stringify(favorites));
 
   }
 
   public isFavorite(city: WeatherData): boolean {
+    console.log('fav', this.getFavorites());
+    console.log('this.getFavorites().includes(city)',this.getFavorites().includes(city));
     return this.getFavorites().includes(city);
   }
 }
